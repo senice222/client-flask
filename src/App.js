@@ -21,7 +21,7 @@ function App() {
             <Layout>
                 <div>
                     <Routes>
-                        <Route path={'/aboutUs'} element={<About />}/>
+                        <Route path={'/'} element={<About />}/>
                         { i18n.language === 'uk'
                             ?
                             <Route path={'/uk_news'} element={<UkrainianNews/>} />

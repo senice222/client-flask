@@ -1,9 +1,15 @@
 import React from 'react';
+import style from './About.module.scss'
+import {useTranslation} from "react-i18next";
 
 const About = () => {
+    const {t} = useTranslation()
+
     return (
-        <div style={{display: 'flex', justifyContent: "center"}}>
-            123
+        <div className={style.container}>
+            <div className={style.content}>
+                <h2>{t("aboutUs")}</h2>
+            </div>
         </div>
     );
 };
