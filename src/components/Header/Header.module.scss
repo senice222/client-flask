@@ -1,0 +1,168 @@
+
+.link {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+  font-size: 15px;
+  transition: .2s;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    top: 28px;
+    transition: 0.3s;
+    border-radius: 3px;
+  }
+
+  &:hover:after {
+    width: 100%;
+    background-color: #dd9300;
+  }
+
+  &:hover {
+    color: #d1951d;
+  }
+
+}
+
+.active {
+  font-size: 15px;
+  text-decoration: none;
+  color: #d1951d;
+  margin-left: 15px;
+  transition: .2s;
+  position: relative;
+
+  &:hover {
+    color: #d1951d;
+  }
+
+  &:after {
+    font-weight: normal;
+    content: "";
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    top: 28px;
+    transition: 0.3s;
+    border-radius: 3px;
+  }
+
+  &:after {
+    width: 100%;
+    background-color: #dd9300;
+  }
+}
+
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  padding: 15px;
+  height: 8vh;
+
+
+  .logo {
+    text-decoration: none;
+    color: inherit;
+    margin-right: 50px;
+  }
+
+  .menu {
+    .list {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+  }
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+//.hamburgerLine {
+//  display: block;
+//  height: 2px;
+//  position: relative;
+//  width: 24px;
+//  background: #000;
+//}
+
+.hamburgerLine::before,
+.hamburgerLine::after {
+  background: white;
+  content: '';
+  display: block;
+  position: absolute;
+  transition: all .3s;
+  width: 100%;
+  height: 100%;
+
+}
+
+.hamburgerLine::before {
+  background-image: url("../../assets/icons8-menu-24.png");
+}
+
+.hamburgerLine::after {
+  background-image: url("https://icons8.com/icon/88571/close");
+
+}
+
+#toggler {
+  display: none;
+}
+.logout {
+  cursor: pointer;
+}
+.logout:hover {
+  color: #929292;
+  transition: .1s;
+}
+.changeLanguage {
+  padding-right: 10px;
+}
+@media screen and (max-width: 600px) {
+  .navbar {
+    height: auto
+  }
+  .menu {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+
+  }
+  .list {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .navbar label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  #toggler:checked ~ .menu {
+    max-height: 100%;
+  }
+}
+
+
+

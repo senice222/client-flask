@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f6f6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  width: 700px;
+  height: auto;
+
+  h3 {
+    margin-left: 11.5vw;
+  }
+
+  .upload {
+    margin-top: 2vh;
+  }
+  .form {
+    margin-top: 3vh;
+  }
+  .btnLabel {
+    font-size: 15px;
+  }
+
+  .label {
+    font-size: 16px;
+  }
+
+  .title {
+    height: 37px;
+    font-size: 17px;
+  }
+  .description {
+    height: 45px;
+    padding: 7px;
+    font-size: 17px;
+  }
+  .content {
+    height: 70px;
+    font-size: 19px;
+  }
+  .btn {
+    margin-top: 15px;
+  }
+}
+.area {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 600px) {
+  .container {
+    width: 80%;
+  }
+}

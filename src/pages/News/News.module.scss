@@ -1,0 +1,83 @@
+.newsItem {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px;
+
+  .newsContent {
+    flex: 1;
+    padding: 20px;
+
+    .newsTitle {
+      font-size: 20px;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+    .newsTitle {
+      font-size: 20px;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+    .newsDate {
+      margin-top: 5px;
+      color: #999;
+      font-size: 14px;
+    }
+    .newsDescription {
+      margin: 0;
+      color: #777;
+    }
+
+    .readMore {
+      display: inline-block;
+      margin-top: 10px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .readMore:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .deleteIcon {
+    color: #d9534f;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  .deleteIcon:hover {
+    background-color: #e7eaef;
+  }
+}
+
+.newsImage {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+}
+@media screen and (max-width: 600px) {
+  .newsItem {
+    flex-direction: column; /* Change to column layout for mobile */
+    margin: 10px; /* Reduce margin for mobile */
+  }
+
+  .newsImage {
+    width: 100%; /* Image width will adjust to the container width */
+    max-height: 200px; /* Increase the image height for mobile */
+  }
+
+  .newsTitle {
+    font-size: 18px; /* Slightly smaller font size for mobile */
+  }
+}

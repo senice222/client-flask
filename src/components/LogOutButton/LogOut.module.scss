@@ -1,0 +1,49 @@
+.active {
+  text-decoration: none;
+  color: #d1951d;
+  margin-left: 15px;
+  font-size: 15px;
+  transition: .2s;
+  position: relative;
+
+  &:hover {
+    color: #d1951d;
+  }
+}
+.link {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+  font-size: 15px;
+  transition: .2s;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    top: 28px;
+    transition: 0.3s;
+    border-radius: 3px;
+  }
+
+  &:hover:after {
+    width: 100%;
+    background-color: #dd9300;
+  }
+
+  &:hover {
+    color: #d1951d;
+  }
+
+}
+.logout {
+  cursor: pointer;
+}
+.logout:hover {
+  color: #929292;
+  transition: .1s;
+}

@@ -1,0 +1,29 @@
+.wrapper {
+  background: #f6f6f6;
+  .imgWrap {
+    display: flex;
+    justify-content: center;
+    user-select: none
+  }
+
+  .img {
+    height: 30vh;
+    overflow-x: hidden;
+    margin-top: 15px;
+  }
+  .line {
+    border: 10px;
+    width: 62.2vw;
+    height: 4px;
+    background: #233d88;
+    border-radius: 15px;
+    margin-left: 19.8vw;
+    margin-bottom: 3vh;
+    margin-top: 2vh;
+  }
+}
+@media screen and (max-width: 600px) {
+  .img {
+    width: 100%
+  }
+}
