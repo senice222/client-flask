@@ -4,7 +4,7 @@ import style from './News.module.scss'
 import {parseCookies} from "nookies";
 import basket from '../../assets/icons8-delete-64.png'
 
-const NewsItem = ({title, img, description, id, date, handleDelete}) => {
+const NewsItem = ({title, img, description, id, date, handleDelete, }) => {
     const cookies = parseCookies()
 
     return (

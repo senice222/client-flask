@@ -12,7 +12,6 @@ const UkrainianNews = () => {
                 setNews(data)
             }
             fetchUkrNews()
-
         } catch (e) {
             console.log(e)
         }

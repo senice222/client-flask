@@ -66,6 +66,12 @@
   height: 150px;
   object-fit: cover;
 }
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
 @media screen and (max-width: 600px) {
   .newsItem {
     width: 85%;

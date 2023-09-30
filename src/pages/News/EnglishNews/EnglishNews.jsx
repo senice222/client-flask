@@ -12,7 +12,6 @@ const EnglishNews = () => {
                 setNews(data)
             }
             fetchEngNews()
-
         } catch (e) {
             console.log(e)
         }
