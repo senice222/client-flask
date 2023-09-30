@@ -68,8 +68,9 @@
 }
 @media screen and (max-width: 600px) {
   .newsItem {
+    width: 85%;
+    margin-left: 30px;
     flex-direction: column; /* Change to column layout for mobile */
-    margin: 10px; /* Reduce margin for mobile */
   }
 
   .newsImage {
