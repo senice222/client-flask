@@ -91,20 +91,12 @@
   }
 }
 
+
 .hamburger {
   display: none;
   font-size: 24px;
   cursor: pointer;
 }
-
-//.hamburgerLine {
-//  display: block;
-//  height: 2px;
-//  position: relative;
-//  width: 24px;
-//  background: #000;
-//}
-
 .hamburgerLine::before,
 .hamburgerLine::after {
   background: white;
@@ -118,12 +110,9 @@
 }
 
 .hamburgerLine::before {
-  background-image: url("../../assets/icons8-menu-24.png");
 }
 
 .hamburgerLine::after {
-  background-image: url("https://icons8.com/icon/88571/close");
-
 }
 
 #toggler {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './Header.module.scss'
 import {NavLink, useLocation} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -14,15 +14,23 @@ const Header = () => {
     const {t, i18n} = useTranslation()
     const cookies = parseCookies()
 
+    const toggleMenu = () => {
+        setIsActive(!isActive);
+    };
+
+    useEffect(() => {
+        setIsActive(false)
+    }, [location]);
+
     return (
 
         <nav className={style.navbar}>
             <NavLink className={location.pathname === '/' ? style.active : style.link} to={'/'}>
                 {t("aboutUs")}
             </NavLink>
-            <input type="checkbox" id={style.toggler}/>
+            <input type="checkbox" id={style.toggler} checked={isActive} onChange={toggleMenu}/>
             <label htmlFor={style.toggler} className={style.hamburger}>
-                <img src={isActive ? close : menu} onClick={() => setIsActive(!isActive)} alt="/"/>
+                <img src={isActive ? close : menu} onChange={toggleMenu} alt="/"/>
             </label>
             <div className={style.menu}>
                 <ul className={style.list}>
@@ -54,7 +62,7 @@ const Header = () => {
                         {t("feedBack2")}
                     </NavLink>
                     <div className={style.changeLanguage}>
-                        <ChangeLanguageButton />
+                        <ChangeLanguageButton setIsActive={setIsActive}/>
                     </div>
                     <LogOutButton />
                 </ul>

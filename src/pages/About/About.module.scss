@@ -1,20 +1,25 @@
 .container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin-left: 7vw;
+
+  .content {
     display: flex;
     justify-content: center;
-    
-    .content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50vw;
-        height: 50vh;
-        background: #FFFFFF;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+    align-items: center;
+    width: 50vw;
+    height: 50vh;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @media screen and (max-width: 600px) {
+  .container {
+    width: 85%;
+
     .content {
       width: 100%;
       margin-left: 10px;
@@ -24,3 +29,4 @@
       }
     }
   }
+}

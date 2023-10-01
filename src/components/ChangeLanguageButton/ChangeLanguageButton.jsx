@@ -7,7 +7,7 @@ import style from './ChangeLanguageButton.module.scss'
 import {useNavigate} from "react-router-dom";
 import {setCookie} from "nookies";
 
-const ChangeLanguageButton = () => {
+const ChangeLanguageButton = ({setIsActive}) => {
     const {t, i18n} = useTranslation()
     const navigate = useNavigate()
     const location = window.location.pathname
@@ -23,6 +23,7 @@ const ChangeLanguageButton = () => {
         })
         i18n.changeLanguage(language);
         popupState.close();
+        setIsActive(false)
     };
 
     return (
