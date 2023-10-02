@@ -32,7 +32,8 @@
 
   p {
     text-align: justify;
-  }
+    margin: 10px;
+    word-break: break-word;  }
 }
 .newsImage {
   max-width: 70%;
