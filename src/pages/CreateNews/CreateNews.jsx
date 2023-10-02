@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import style from './CreateNews.module.scss'
-import {Form, Input, notification} from "antd";
+import {Button, Form, Input, notification} from "antd";
 import {MyFormItem, MyFormItemGroup} from "../../utils/antd";
 import {useTranslation} from "react-i18next";
 import TextArea from "antd/lib/input/TextArea";
@@ -108,9 +108,12 @@ const CreateNews = () => {
                         </MyFormItem>
                     </MyFormItemGroup>
 
-                    <button className={style.btn}>
-                        <p className={style.btnLabel}>{t("toPublic")}</p>
-                    </button>
+                    {/*<button className={style.btn}>*/}
+                    {/*    <p className={style.btnLabel}>{t("toPublic")}</p>*/}
+                    {/*</button>*/}
+                    <Button type="primary" htmlType="submit">
+                        {t("toPublic")}
+                    </Button>
                 </Form>
             </div>
         </div>
