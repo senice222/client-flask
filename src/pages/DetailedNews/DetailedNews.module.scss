@@ -7,7 +7,7 @@
   width: 50%;
   border-radius: 5px;
   background-color: #e8e8e8;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 .area {
@@ -45,7 +45,6 @@
 
 @media screen and (max-width: 600px) {
   .newsContainer {
-    // padding-top: 50px;
     width: 90%;
     
   }

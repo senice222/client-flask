@@ -1,0 +1,27 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .notEnoughNews {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 40vw;
+    border-radius: 5px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+
+    .notEnoughNews {
+      width: 70%;
+      margin-left: 15px;
+    }
+  }
+}

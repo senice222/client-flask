@@ -9,7 +9,7 @@ const NewsItem = ({title, img, description, id, date, handleDelete}) => {
     // сделать проверку imgUrl ? imgUrl : `port4era:${img_file}`
     return (
         <div className={style.newsItem}>
-            <img className={style.newsImage} src={`${img}`} alt="News"/>
+            <NavLink to={`/news/${id}`}><img className={style.newsImage} src={`${img}`} alt="News"/></NavLink>
             <div className={style.newsContent}>
                 <h2 className={style.newsTitle}>{title}</h2>
                 <p className={style.newsDescription}>{description}</p>

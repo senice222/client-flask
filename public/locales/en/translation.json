@@ -49,6 +49,7 @@
   "languageCode": "Language code must be at most 2 characters long.",
   "engNews": "NEWS",
   "language1": "Language",
-  "imgFile": "File image"
+  "imgFile": "File image",
+  "noNews": "No news"
 
 }
