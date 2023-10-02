@@ -40,13 +40,33 @@
     font-size: 19px;
   }
   .btn {
+    border: none;
+    height: 40px;
+    width: 100px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #1976D2;
+    font-size: 17px;
     margin-top: 15px;
+    color: white;
+    transition: .1s;
   }
+  .btn:hover {
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    background: #1666b6;
+  }
+}
+.isChose {
+  user-select: none;
 }
 .area {
   display: flex;
   justify-content: center;
 }
+
+
+
 @media screen and (max-width: 600px) {
   .container {
     width: 80%;

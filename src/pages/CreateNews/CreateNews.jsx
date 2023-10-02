@@ -1,17 +1,29 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './CreateNews.module.scss'
-import {Button, Form, Input, notification} from "antd";
+import {Form, Input, notification} from "antd";
 import {MyFormItem, MyFormItemGroup} from "../../utils/antd";
 import {useTranslation} from "react-i18next";
 import TextArea from "antd/lib/input/TextArea";
 import * as Api from '../../api/index'
 import {useNavigate} from "react-router-dom";
-
+// import Button from '@mui/material/Button';
+// import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+// import {VisuallyHiddenInput} from "../../utils/style";
 
 const CreateNews = () => {
     const {t, i18n} = useTranslation()
     const [form] = Form.useForm();
     const navigate = useNavigate()
+    // const [selectedFile, setSelectedFile] = useState(null);
+    //
+    // const handleFileChange = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         setSelectedFile(file);
+    //     } else {
+    //         setSelectedFile(null);
+    //     }
+    // };
 
     useEffect(() => {
         document.title = 'Create news';
@@ -42,7 +54,7 @@ const CreateNews = () => {
                             <MyFormItem rules={[{required: true, message: 'Please input your title!'}]}
                                         name="title"
                                         label={<p className={style.label}>{t("title")}</p>}>
-                                <Input className={style.title} />
+                                <Input className={style.title}/>
                             </MyFormItem>
                         </MyFormItemGroup>
 
@@ -59,20 +71,34 @@ const CreateNews = () => {
                         </MyFormItem>
 
                         <MyFormItem name="image_url"
-                                    rules={[{required: true, message: 'Please input your image_url!'}]}
                                     label={<p className={style.label}>{t("URL")}</p>}>
-                            <Input className={style.description} />
+                            <Input className={style.description}/>
                         </MyFormItem>
+
+                        {/*<MyFormItem name="image_file"*/}
+                        {/*            label={<p className={style.label}>{t("imgFile")}</p>}*/}
+                        {/*>*/}
+                        {/*    <div>*/}
+                        {/*        <Button component="label" variant="contained" onChange={handleFileChange}*/}
+                        {/*                startIcon={<CloudUploadIcon/>}>*/}
+                        {/*            <p>Upload File</p>*/}
+                        {/*            <VisuallyHiddenInput type="file"/>*/}
+                        {/*        </Button>*/}
+                        {/*        <p style={{marginTop: "15px"}}>{selectedFile ?*/}
+                        {/*            <p className={style.isChose}>Файл выбран</p>*/}
+                        {/*            : <p className={style.isChose}>Файл не выбран</p>}</p>*/}
+                        {/*    </div>*/}
+                        {/*</MyFormItem>*/}
 
                         <MyFormItem
                             name="language"
                             rules={[
-                                { required: true, message: 'Please input your language!' },
-                                { type: 'string', max: 2, message: 'Language code must be at most 2 characters long.' },
+                                {required: true, message: 'Please input your language!'},
+                                {type: 'string', max: 2, message: 'Language code must be at most 2 characters long.'},
                             ]}
                             label={<p className={style.label}>{t("language1")}</p>}
                         >
-                            <Input className={style.description} placeholder={'en or uk'} />
+                            <Input className={style.description} placeholder={'en or uk'}/>
                         </MyFormItem>
 
                         <MyFormItem name="text"
@@ -82,12 +108,12 @@ const CreateNews = () => {
                         </MyFormItem>
                     </MyFormItemGroup>
 
-                    <Button className={style.btn} type="primary" htmlType="submit">
+                    <button className={style.btn}>
                         <p className={style.btnLabel}>{t("toPublic")}</p>
-                    </Button>
+                    </button>
                 </Form>
             </div>
         </div>
-    );
+    )
 };
 export default CreateNews;

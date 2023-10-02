@@ -19,12 +19,12 @@ const DetailedNews = () => {
         fetchNews()
         document.title = 'News..';
     }, [params.id]);
-
+    // сделать проверку imgUrl ? imgUrl : `port4era:${img_file}`
     return (
         <div className={style.area}>
             <div className={style.newsContainer}>
                 <img
-                    src={news?.image_url}
+                    src={news?.image_url }
                     alt="/" className={style.newsImage}
                 />
                 <div className={style.detailedNewsTitle}>{news?.title}</div>
