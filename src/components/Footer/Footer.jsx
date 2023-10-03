@@ -12,15 +12,15 @@ const Footer = () => {
             <div className={style.footerContent}>
                 <div className={style.footerSection}>
                     <h3>{t("Contact")}</h3>
-                    <p>Phone: 123-456-7890</p>
-                    <p>Email: info@example.com</p>
-                    <p>Address: 123 Main St, City, Country</p>
+                    <p>{t("phone")}: 123-456-7890</p>
+                    <p>{t("email")}: info@example.com</p>
+                    <p>{t("address")}: 123 Main St, City, Country</p>
                 </div>
                 <div className={style.footerSection}>
                     <h3>{t("QuickLinks")}</h3>
                     <ul>
-                        <li><NavLink className={style.links} to="/">About Us</NavLink></li>
-                        <li><NavLink className={style.links} to="/category/feedback">Contact</NavLink></li>
+                        <li><NavLink className={style.links} to="/">{t("about")}</NavLink></li>
+                        <li><NavLink className={style.links} to="/category/feedback">{t("Contact")}</NavLink></li>
                     </ul>
                 </div>
                 <div className={style.footerSection}>
