@@ -81,7 +81,7 @@
 
   .newsImage {
     width: 100%; /* Image width will adjust to the container width */
-    max-height: 200px; /* Increase the image height for mobile */
+    height: auto; /* Increase the image height for mobile */
   }
 
   .newsTitle {
