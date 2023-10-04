@@ -72,6 +72,7 @@ const CreateNews = () => {
                         </MyFormItem>
 
                         <MyFormItem name="image_url"
+                                    rules={[{required: true, message: 'Please input your password!'}]}
                                     label={<p className={style.label}>{t("URL")}</p>}>
                             <Input className={style.description}/>
                         </MyFormItem>
