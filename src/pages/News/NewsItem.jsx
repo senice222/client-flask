@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 import style from './News.module.scss'
 import {parseCookies} from "nookies";
 import basket from '../../assets/icons8-delete-64.png'
+import {Button} from "antd";
+import {useTranslation} from "react-i18next";
 
 const NewsItem = ({title, img, description, id, date, handleDelete}) => {
     const cookies = parseCookies()
+    const [show, setShow] = useState(false)
+    const {t} = useTranslation()
+
     // сделать проверку imgUrl ? imgUrl : `port4era:${img_file}`
+
+    const handleOk = () => {
+        handleDelete()
+        setShow(false)
+    }
+
     return (
         <div className={style.newsItem}>
             <NavLink to={`/news/${id}`}><img className={style.newsImage} src={`${img}`} alt="News"/></NavLink>
@@ -16,7 +27,20 @@ const NewsItem = ({title, img, description, id, date, handleDelete}) => {
                 <p className={style.newsDate}>{date}</p>
                 <NavLink className={style.readMore} to={`/news/${id}`}>Read More</NavLink>
             </div>
-            { cookies.admin && <img src={basket} alt={'/'} onClick={handleDelete} className={style.deleteIcon} /> }
+            <div className={style.deleteContainer}>
+                { cookies.admin && <img src={basket} alt={'/'} onClick={() => setShow(!show)} className={style.deleteIcon} /> }
+                {
+                    show && (
+                        <div style={{marginRight: "15px"}}>
+                            <h4>{t("areYouSure")}</h4>
+                            <div className={style.deleteBtns}>
+                                <Button type="primary" danger className={style.btnOk} onClick={handleOk}>Так</Button>
+                                <Button type="primary" className={style.btnCancel} onClick={() => setShow(false)}>Нi</Button>
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
         </div>
     );
 };

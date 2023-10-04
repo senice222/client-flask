@@ -38,21 +38,39 @@ const Feedback = () => {
                 <Form className={style.form} name="form_item_path" layout="vertical" onFinish={onFinish}>
                     <MyFormItemGroup prefix={['user']}>
                         <MyFormItemGroup prefix={[]}>
-                            <MyFormItem rules={[{required: true, message: 'Please input your name!'}]}
+                            <MyFormItem rules={[
+                                {required: true, message: 'Please input your name!'},
+                            ]}
                                         name="name"
                                         label={<p className={style.label}>{t("name")}</p>}>
-                                <Input className={style.title} />
+                                <Input className={style.title}/>
                             </MyFormItem>
                         </MyFormItemGroup>
 
                         <MyFormItem name="email"
-                                    rules={[{required: true, message: 'Please input your email!'}]}
+                                    rules={[
+                                        { required: true, message: 'Please input your email!' },
+                                        {
+                                            validator: (_, value) => {
+                                                if (value && !value.endsWith('@example.com')) {
+                                                    return Promise.reject('Email must end with @example.com');
+                                                }
+                                                return Promise.resolve();
+                                            },
+                                        },
+                                    ]}
                                     label={<p className={style.label}>{t("email")}</p>}>
                             <Input className={style.description} placeholder={'@gmail.com'}/>
                         </MyFormItem>
 
                         <MyFormItem name="phoneNumber"
-                                    rules={[{required: true, message: 'Please input your phone number!'}]}
+                                    rules={[
+                                        { required: true, message: 'Please input your phone number!' },
+                                        {
+                                            pattern: /^(?:(?:\+|00)?\d{1,3})?[1-9]\d{6,14}$/,
+                                            message: 'Please enter a valid phone number, without any spaces.',
+                                        },
+                                    ]}
                                     label={<p className={style.label}>{t("phone")}</p>}>
                             <Input className={style.description}/>
                         </MyFormItem>

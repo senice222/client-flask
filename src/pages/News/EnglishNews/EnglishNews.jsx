@@ -62,4 +62,5 @@ const EnglishNews = () => {
     );
 };
 
+
 export default EnglishNews;

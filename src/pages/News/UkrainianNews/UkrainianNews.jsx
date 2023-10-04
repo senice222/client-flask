@@ -6,6 +6,7 @@ import {useTranslation} from "react-i18next";
 
 const UkrainianNews = () => {
     const [news, setNews] = useState();
+    const [warning, setWarning] = useState(false)
     const {t} = useTranslation()
 
     useEffect(() => {
@@ -61,5 +62,6 @@ const UkrainianNews = () => {
         </>
     );
 };
+
 
 export default UkrainianNews;

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import style from './CreateNews.module.scss'
-import {Button, Form, Input, notification} from "antd";
+import {Button, Form, Input, notification, Select} from "antd";
 import {MyFormItem, MyFormItemGroup} from "../../utils/antd";
 import {useTranslation} from "react-i18next";
 import TextArea from "antd/lib/input/TextArea";
@@ -14,6 +14,7 @@ const CreateNews = () => {
     const {t, i18n} = useTranslation()
     const [form] = Form.useForm();
     const navigate = useNavigate()
+
     // const [selectedFile, setSelectedFile] = useState(null);
     //
     // const handleFileChange = (event) => {
@@ -94,11 +95,17 @@ const CreateNews = () => {
                             name="language"
                             rules={[
                                 {required: true, message: 'Please input your language!'},
-                                {type: 'string', max: 2, message: 'Language code must be at most 2 characters long.'},
                             ]}
                             label={<p className={style.label}>{t("language1")}</p>}
                         >
-                            <Input className={style.description} placeholder={'en or uk'}/>
+                            <Select>
+                                <Select.Option value="uk">
+                                    <h4>Ukrainian</h4>
+                                </Select.Option>
+                                <Select.Option value="en">
+                                    <h4>English</h4>
+                                </Select.Option>
+                            </Select>
                         </MyFormItem>
 
                         <MyFormItem name="text"
