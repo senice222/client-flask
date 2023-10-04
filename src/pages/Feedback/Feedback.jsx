@@ -49,12 +49,18 @@ const Feedback = () => {
 
                         <MyFormItem name="email"
                                     rules={[
-                                        { required: true, message: 'Please input your email!' },
                                         {
                                             validator: (_, value) => {
-                                                if (value && !value.endsWith('@example.com')) {
-                                                    return Promise.reject('Email must end with @example.com');
+                                                if (!value) {
+                                                    return Promise.reject('Please input your email');
                                                 }
+
+                                                const emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+
+                                                if (!value.match(emailPattern)) {
+                                                    return Promise.reject('Invalid email format');
+                                                }
+
                                                 return Promise.resolve();
                                             },
                                         },
@@ -65,11 +71,14 @@ const Feedback = () => {
 
                         <MyFormItem name="phoneNumber"
                                     rules={[
-                                        { required: true, message: 'Please input your phone number!' },
+                                        {
+                                            required: true,
+                                            message: 'Please input your phone number!',
+                                        },
                                         {
                                             pattern: /^(?:(?:\+|00)?\d{1,3})?[1-9]\d{6,14}$/,
-                                            message: 'Please enter a valid phone number, without any spaces.',
-                                        },
+                                            message: 'Please enter a valid phone number containing only digits, without spaces. The number can start with a plus sign (+) or double-zero (00) followed by up to 3 digits.',
+                                        }
                                     ]}
                                     label={<p className={style.label}>{t("phone")}</p>}>
                             <Input className={style.description}/>
