@@ -77,11 +77,11 @@ const Feedback = () => {
                                         },
                                         {
                                             pattern: /^(?:(?:\+|00)?\d{1,3})?[1-9]\d{6,14}$/,
-                                            message: 'Please enter a valid phone number containing only digits, without spaces. The number can start with a plus sign (+) or double-zero (00) followed by up to 3 digits.',
+                                            message: 'Invalid phone number. Only digits, without spaces, minimum length must be more than 7.',
                                         }
                                     ]}
                                     label={<p className={style.label}>{t("phone")}</p>}>
-                            <Input className={style.description}/>
+                            <Input className={style.description} placeholder="+380777777777" />
                         </MyFormItem>
 
                         <MyFormItem name="introduction"
