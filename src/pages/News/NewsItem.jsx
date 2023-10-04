@@ -25,7 +25,7 @@ const NewsItem = ({title, img, description, id, date, handleDelete}) => {
                 <h2 className={style.newsTitle}>{title}</h2>
                 <p className={style.newsDescription}>{description}</p>
                 <p className={style.newsDate}>{date}</p>
-                <NavLink className={style.readMore} to={`/news/${id}`}>Read More</NavLink>
+                <NavLink className={style.readMore} to={`/news/${id}`}>{t("readMore")}</NavLink>
             </div>
             <div className={style.deleteContainer}>
                 { cookies.admin && <img src={basket} alt={'/'} onClick={() => setShow(!show)} className={style.deleteIcon} /> }
