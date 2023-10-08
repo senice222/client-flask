@@ -26,7 +26,6 @@ const Jodit = () => {
                         'undo',
                         'redo',
                         'format',
-                        'brush',
                     ],
                     buttons: [
                         'bold',
@@ -37,14 +36,13 @@ const Jodit = () => {
                         'ol',
                         'font',
                         'fontsize',
-                        // 'brush',
+                        'brush',
                         'paragraph',
                         'image',
                         'link',
                         'align',
                         'hr',
                     ],
-                    disablePlugins: ['format'],
                 }}
             />
         </div>
