@@ -3,6 +3,7 @@ import style from './DetailedNews.module.scss';
 import * as Api from "../../api/news";
 import { useParams } from "react-router-dom";
 import { parse } from 'node-html-parser';
+import Markdown from 'react-markdown'
 
 const DetailedNews = () => {
     const [news, setNews] = useState();
@@ -13,6 +14,7 @@ const DetailedNews = () => {
         const fetchNews = async () => {
             try {
                 const data = await Api.getDetailedNews(params.id)
+                console.log(data)
                 setNews(data);
 
                 const parsedHTML = parse(data?.text);
@@ -37,10 +39,13 @@ const DetailedNews = () => {
                 <div className={style.detailedNewsTitle}>{news?.title}</div>
 
                 {/* Отображаем преобразованный HTML-код */}
-                <div
-                    className={style.detailedNewsContent}
-                    dangerouslySetInnerHTML={{ __html: parsedText }}
-                />
+                {/*<div*/}
+                {/*    className={style.detailedNewsContent}*/}
+                {/*    dangerouslySetInnerHTML={{ __html: parsedText }}*/}
+                {/*/>*/}
+                <Markdown className={style.detailedNewsContent}>
+                    {news?.text}
+                </Markdown>
             </div>
         </div>
     );

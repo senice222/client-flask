@@ -1,7 +1,8 @@
 import React, {useContext, useRef} from 'react';
 import EditorContext from "../../context/editorContext";
-import JoditEditor from 'jodit-react';
 import debounce from 'lodash/debounce';
+import SimpleMDEEditor from "react-simplemde-editor"; // Renamed to SimpleMDEEditor
+import 'easymde/dist/easymde.min.css';
 
 const Jodit = () => {
     const {editorContent, setEditorContent} = useContext(EditorContext)
@@ -13,38 +14,24 @@ const Jodit = () => {
 
     return (
         <div style={{}}>
-            <JoditEditor
-                ref={editor}
-                value={editorContent}
-                onChange={(newContent) => handleSaveContent(newContent)}
-                tabIndex={1}
-                config={{
-                    minHeight: "400px",
-                    removeButtons: [
-                        'table',
-                        'source',
-                        'undo',
-                        'redo',
-                        'format',
-                    ],
-                    buttons: [
-                        'bold',
-                        'strikethrough',
-                        'underline',
-                        'italic', '|',
-                        'ul',
-                        'ol',
-                        'font',
-                        'fontsize',
-                        'brush',
-                        'paragraph',
-                        'image',
-                        'link',
-                        'align',
-                        'hr',
-                    ],
-                }}
-            />
+            <div>
+                <h1 style={{marginBottom: "10px"}}>Редактор "Зміста"</h1>
+                <SimpleMDEEditor
+                    value={editorContent}
+                    onChange={handleSaveContent}
+                    options={{
+                        autosave: {
+                            enabled: true,
+                            uniqueId: 'MyUniqueID',
+                        },
+                        toolbar: ['bold', 'italic', '|', 'heading', '|', 'quote', '|', 'unordered-list', 'ordered-list', '|', 'link', '|', 'image'],
+                        spellChecker: false,
+                    }}
+                />
+                {/*<div className={style.line} />*/}
+
+                {/*<Result />*/}
+            </div>
         </div>
     );
 };
