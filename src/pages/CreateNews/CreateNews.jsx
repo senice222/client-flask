@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import style from './CreateNews.module.scss'
 import {Button, Form, Input, notification, Select} from "antd";
 import {MyFormItem, MyFormItemGroup} from "../../utils/antd";
@@ -9,22 +9,15 @@ import {useNavigate} from "react-router-dom";
 // import Button from '@mui/material/Button';
 // import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 // import {VisuallyHiddenInput} from "../../utils/style";
+import Jodit from "../../components/JoditEditor/JoditEditor";
+import EditorContext from "../../context/editorContext";
+
 
 const CreateNews = () => {
     const {t, i18n} = useTranslation()
     const [form] = Form.useForm();
     const navigate = useNavigate()
-
-    // const [selectedFile, setSelectedFile] = useState(null);
-    //
-    // const handleFileChange = (event) => {
-    //     const file = event.target.files[0];
-    //     if (file) {
-    //         setSelectedFile(file);
-    //     } else {
-    //         setSelectedFile(null);
-    //     }
-    // };
+    const {editorContent} = useContext(EditorContext)
 
     useEffect(() => {
         document.title = 'Create news';
@@ -32,7 +25,15 @@ const CreateNews = () => {
 
     const onFinish = async (values) => {
         try {
-            await Api.news.createNews(values.user)
+            const updatedValues = {
+                title: values.user.title,
+                description: values.user.description,
+                image_url: values.user.image_url,
+                language: values.user.language,
+                password: values.user.password,
+                text: editorContent
+            }
+            await Api.news.createNews(updatedValues)
             notification.success({
                 message: 'Success! You created new news!',
                 duration: 1,
@@ -77,21 +78,6 @@ const CreateNews = () => {
                             <Input className={style.description}/>
                         </MyFormItem>
 
-                        {/*<MyFormItem name="image_file"*/}
-                        {/*            label={<p className={style.label}>{t("imgFile")}</p>}*/}
-                        {/*>*/}
-                        {/*    <div>*/}
-                        {/*        <Button component="label" variant="contained" onChange={handleFileChange}*/}
-                        {/*                startIcon={<CloudUploadIcon/>}>*/}
-                        {/*            <p>Upload File</p>*/}
-                        {/*            <VisuallyHiddenInput type="file"/>*/}
-                        {/*        </Button>*/}
-                        {/*        <p style={{marginTop: "15px"}}>{selectedFile ?*/}
-                        {/*            <p className={style.isChose}>Файл выбран</p>*/}
-                        {/*            : <p className={style.isChose}>Файл не выбран</p>}</p>*/}
-                        {/*    </div>*/}
-                        {/*</MyFormItem>*/}
-
                         <MyFormItem
                             name="language"
                             rules={[
@@ -109,17 +95,28 @@ const CreateNews = () => {
                             </Select>
                         </MyFormItem>
 
-                        <MyFormItem name="text"
-                                    rules={[{required: true, message: 'Please input your text!'}]}
-                                    label={<p className={style.label}>{t("content")}</p>}>
-                            <TextArea className={style.content}/>
+                        <MyFormItem
+                            name="text"
+                            rules={[
+                                {
+                                    validator: () => {
+                                        if (!editorContent || editorContent.trim() === '') {
+                                            return Promise.reject('Please input your text!');
+                                        }
+
+                                        return Promise.resolve();
+                                    },
+                                },
+                            ]}
+                            label={<p className={style.label}>{t("content")}</p>}
+                            validateTrigger="onChange"
+                        >
+                            <Jodit className={style.editor} />
                         </MyFormItem>
+
                     </MyFormItemGroup>
 
-                    {/*<button className={style.btn}>*/}
-                    {/*    <p className={style.btnLabel}>{t("toPublic")}</p>*/}
-                    {/*</button>*/}
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" style={{marginTop: "10px"}}>
                         {t("toPublic")}
                     </Button>
                 </Form>

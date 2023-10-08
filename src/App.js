@@ -12,40 +12,44 @@ import About from "./pages/About/About";
 import DetailedNews from "./pages/DetailedNews/DetailedNews";
 import {useTranslation} from "react-i18next";
 import EnglishNews from "./pages/News/EnglishNews/EnglishNews";
-// import Modal from "./components/Modal/Modal";
+import EditorContext from "./context/editorContext";
 
 function App() {
     const {i18n} = useTranslation()
-    // const [modalOpen, setModalOpen] = useState(false);
+    const [editorContent, setEditorContent] = useState('')
+
+    const contextValue = {
+        editorContent,
+        setEditorContent
+    }
 
     return (
-        <BrowserRouter>
-            <Layout>
-                <div>
-                    <Routes>
-                        <Route path={'/'} element={<About />}/>
-                        { i18n.language === 'uk'
-                            ?
-                            <Route path={'/uk_news'} element={<UkrainianNews/>} />
-                            :
-                            <Route path={'/en_news'} element={<EnglishNews/>}/>
-                        }
-                        <Route path={'/category/management'} element={<Management />}/>
-                        <Route path={'/category/feedback'} element={<Feedback />}/>
-                        <Route path={'/create-news'} index element={
-                            <ProtectedRoute>
-                                <CreateNews />
-                            </ProtectedRoute>
-                        } />
-                        <Route path={'/news/:id'} element={<DetailedNews />} />
-                        <Route path={'/login'} element={<Login />}/>
-                    </Routes>
-                </div>
-                {/*<Modal setModalOpen={setModalOpen}*/}
-                {/*       modalOpen={modalOpen}*/}
-                {/*/>*/}
-            </Layout>
-        </BrowserRouter>
+        <EditorContext.Provider value={contextValue}>
+            <BrowserRouter>
+                <Layout>
+                    <div>
+                        <Routes>
+                            <Route path={'/'} element={<About />}/>
+                            { i18n.language === 'uk'
+                                ?
+                                <Route path={'/uk_news'} element={<UkrainianNews/>} />
+                                :
+                                <Route path={'/en_news'} element={<EnglishNews/>}/>
+                            }
+                            <Route path={'/category/management'} element={<Management />}/>
+                            <Route path={'/category/feedback'} element={<Feedback />}/>
+                            <Route path={'/create-news'} index element={
+                                <ProtectedRoute>
+                                    <CreateNews />
+                                </ProtectedRoute>
+                            } />
+                            <Route path={'/news/:id'} element={<DetailedNews />} />
+                            <Route path={'/login'} element={<Login />}/>
+                        </Routes>
+                    </div>
+                </Layout>
+            </BrowserRouter>
+        </EditorContext.Provider>
     );
 }
 

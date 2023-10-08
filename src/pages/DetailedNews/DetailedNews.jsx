@@ -1,17 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './DetailedNews.module.scss';
 import * as Api from "../../api/news";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { parse } from 'node-html-parser';
 
 const DetailedNews = () => {
     const [news, setNews] = useState();
     const params = useParams()
+    const [parsedText, setParsedText] = useState('');
 
     useEffect(() => {
         const fetchNews = async () => {
             try {
                 const data = await Api.getDetailedNews(params.id)
-                setNews(data)
+                setNews(data);
+
+                const parsedHTML = parse(data?.text);
+
+                const parsedText = parsedHTML.toString();
+                setParsedText(parsedText);
             } catch (e) {
                 console.log(e)
             }
@@ -19,7 +26,7 @@ const DetailedNews = () => {
         fetchNews()
         document.title = 'News..';
     }, [params.id]);
-    // сделать проверку imgUrl ? imgUrl : `port4era:${img_file}`
+
     return (
         <div className={style.area}>
             <div className={style.newsContainer}>
@@ -29,11 +36,11 @@ const DetailedNews = () => {
                 />
                 <div className={style.detailedNewsTitle}>{news?.title}</div>
 
-                <div className={style.detailedNewsContent}>
-                    <p>
-                        {news?.text}
-                    </p>
-                </div>
+                {/* Отображаем преобразованный HTML-код */}
+                <div
+                    className={style.detailedNewsContent}
+                    dangerouslySetInnerHTML={{ __html: parsedText }}
+                />
             </div>
         </div>
     );
