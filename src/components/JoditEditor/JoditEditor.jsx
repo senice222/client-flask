@@ -19,9 +19,14 @@ const Jodit = () => {
                 onChange={(newContent) => handleSaveContent(newContent)}
                 tabIndex={1}
                 config={{
+                    minHeight: "400px",
                     removeButtons: [
                         'table',
-                        'source'
+                        'source',
+                        'undo',
+                        'redo',
+                        'format',
+                        'brush',
                     ],
                     buttons: [
                         'bold',
@@ -29,17 +34,17 @@ const Jodit = () => {
                         'underline',
                         'italic', '|',
                         'ul',
-                        'ol', '|',
+                        'ol',
                         'font',
                         'fontsize',
-                        'brush',
-                        'paragraph', '|',
+                        // 'brush',
+                        'paragraph',
                         'image',
-                        'video',
                         'link',
                         'align',
                         'hr',
                     ],
+                    disablePlugins: ['format'],
                 }}
             />
         </div>

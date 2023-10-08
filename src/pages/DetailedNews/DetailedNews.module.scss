@@ -36,7 +36,9 @@
     word-break: break-word;
     font-size: 15px;
   }
+
 }
+
 .newsImage {
   max-width: 70%;
   min-height: 100px;
@@ -56,14 +58,25 @@
 
     p {
       img {
-        max-width: 100%;
+        max-width: 50%;
         height: auto;
       }
+    }
+
+
+    iframe {
+      max-width: 100%;
+      min-height: 100px;
+    }
+
+    img {
+      max-width: 50%;
+      height: auto;
     }
   }
 
   .newsImage {
     max-width: 90%;
-  
+
   }
 }
