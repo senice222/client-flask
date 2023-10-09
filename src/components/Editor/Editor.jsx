@@ -1,8 +1,8 @@
 import React, {useContext, useRef} from 'react';
 import EditorContext from "../../context/editorContext";
 import JoditEditor from 'jodit-react';
-import debounce from 'lodash/debounce';
 import EditNewsContext from "../../context/editNewsContext";
+import {config} from "../../utils/config";
 
 const EditorComponent = ({editorComponent}) => {
     const {editorContent, setEditorContent} = useContext(EditorContext)
@@ -10,13 +10,13 @@ const EditorComponent = ({editorComponent}) => {
 
     const editor = useRef(null);
 
-    const handleSaveContent = debounce((newContent) => {
+    const handleSaveContent = (newContent) => {
         setEditorContent(newContent);
-    }, 5000);
+    };
 
-    const handleSaveEditorContent = debounce((newContent) => {
+    const handleSaveEditorContent = (newContent) => {
         setEditNewsContent(newContent);
-    }, 5000);
+    }
 
     return (
         <div style={{}}>
@@ -24,39 +24,12 @@ const EditorComponent = ({editorComponent}) => {
                 ref={editor}
                 value={editorComponent ? editNewsContent : editorContent}
                 onChange={
-                (newContent) => {editorComponent ? handleSaveEditorContent(newContent) : handleSaveContent(newContent)}
+                    (newContent) => {
+                        editorComponent ? handleSaveEditorContent(newContent) : handleSaveContent(newContent)
+                    }
                 }
                 tabIndex={1}
-                config={{
-                    minHeight: "400px",
-                    removeButtons: [
-                        'table',
-                        'source',
-                        // 'undo',
-                        // 'redo',
-                        'format',
-                        'underline',
-                        'strikethrough',
-                        'format',
-                        'copyformat'
-                    ],
-                    buttons: [
-                        'bold',
-                        'undo',
-                        'redo',
-                        'italic', '|',
-                        'ul',
-                        'ol',
-                        'font',
-                        'fontsize',
-                        'brush',
-                        'paragraph',
-                        'image',
-                        'link',
-                        'align',
-                        'hr',
-                    ],
-                }}
+                config={config}
             />
         </div>
     );
