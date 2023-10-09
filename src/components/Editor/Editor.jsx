@@ -32,8 +32,8 @@ const EditorComponent = ({editorComponent}) => {
                     removeButtons: [
                         'table',
                         'source',
-                        'undo',
-                        'redo',
+                        // 'undo',
+                        // 'redo',
                         'format',
                         'underline',
                         'strikethrough',
@@ -42,6 +42,8 @@ const EditorComponent = ({editorComponent}) => {
                     ],
                     buttons: [
                         'bold',
+                        'undo',
+                        'redo',
                         'italic', '|',
                         'ul',
                         'ol',
