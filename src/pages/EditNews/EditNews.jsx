@@ -45,22 +45,29 @@ const EditNews = () => {
 
     const onFinish = async (values) => {
         try {
-            const updatedValues = {
-                title: values.title,
-                description: values.description,
-                image_url: values.image_url,
-                language: values.language,
-                password: values.password,
-                text: editNewsContent,
-            };
-            await Api.news.updateNews(id, updatedValues);
+            if (values.password === '1111') {
+                const updatedValues = {
+                    title: values.title,
+                    description: values.description,
+                    image_url: values.image_url,
+                    language: values.language,
+                    password: values.password,
+                    text: editNewsContent,
+                };
+                await Api.news.updateNews(id, updatedValues);
 
-            notification.success({
-                message: 'Success! You updated the news!',
-                duration: 1,
-            });
-            form.resetFields();
-            i18n.language === 'uk' ? navigate('/uk_news') : navigate('/en_news');
+                notification.success({
+                    message: 'Success! You updated the news!',
+                    duration: 1,
+                });
+                form.resetFields();
+                i18n.language === 'uk' ? navigate('/uk_news') : navigate('/en_news');
+            } else {
+                notification.error({
+                    message: 'Something went wrong',
+                    duration: 2,
+                })
+            }
         } catch (e) {
             console.log(e);
         }

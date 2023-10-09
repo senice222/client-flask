@@ -31,16 +31,6 @@
       color: #777;
     }
 
-    .readMore {
-      display: inline-block;
-      margin-top: 10px;
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .readMore:hover {
-      text-decoration: underline;
-    }
   }
 
   .deleteIcon {
@@ -63,11 +53,20 @@
 .deleteContainer {
   display: flex;
   flex-direction: column;
-  //margin-right: 20px;
 
   .editContainer {
     display: flex;
     align-items: center;
+
+    .editLink {
+      text-decoration: none;
+      color: #9a9a9a;
+      transition: .1s;
+    }
+    .editLink:hover {
+      color: #777777;
+
+    }
 
     img {
       margin-left: 10px;
@@ -84,7 +83,16 @@
     }
   }
 }
+.readMore {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
 
+.readMore:hover {
+  text-decoration: underline;
+}
 
 .newsImage {
   width: 200px;

@@ -5,9 +5,6 @@ import {MyFormItem, MyFormItemGroup} from "../../utils/antd";
 import {useTranslation} from "react-i18next";
 import * as Api from '../../api/index'
 import {useNavigate} from "react-router-dom";
-// import Button from '@mui/material/Button';
-// import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-// import {VisuallyHiddenInput} from "../../utils/style";
 import EditorComponent from "../../components/Editor/Editor";
 import EditorContext from "../../context/editorContext";
 
@@ -24,21 +21,28 @@ const CreateNews = () => {
 
     const onFinish = async (values) => {
         try {
-            const updatedValues = {
-                title: values.user.title,
-                description: values.user.description,
-                image_url: values.user.image_url,
-                language: values.user.language,
-                password: values.user.password,
-                text: editorContent
+            if (values.user.password === '1111') {
+                const updatedValues = {
+                    title: values.user.title,
+                    description: values.user.description,
+                    image_url: values.user.image_url,
+                    language: values.user.language,
+                    password: values.user.password,
+                    text: editorContent
+                }
+                await Api.news.createNews(updatedValues)
+                notification.success({
+                    message: 'Success! You created new news!',
+                    duration: 1,
+                })
+                form.resetFields()
+                i18n.language === 'uk' ? navigate('/uk_news') : navigate('/en_news')
+            } else {
+                notification.error({
+                    message: 'Something went wrong',
+                    duration: 2,
+                })
             }
-            await Api.news.createNews(updatedValues)
-            notification.success({
-                message: 'Success! You created new news!',
-                duration: 1,
-            })
-            form.resetFields()
-            i18n.language === 'uk' ? navigate('/uk_news') : navigate('/en_news')
         } catch (e) {
             console.log(e)
         }

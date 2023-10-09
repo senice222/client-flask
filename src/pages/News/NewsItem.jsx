@@ -11,7 +11,6 @@ const NewsItem = ({title, img, description, id, date, handleDelete}) => {
     const [show, setShow] = useState(false)
     const {t} = useTranslation()
 
-    // сделать проверку imgUrl ? imgUrl : `port4era:${img_file}`
 
     const handleOk = () => {
         handleDelete()
@@ -30,7 +29,7 @@ const NewsItem = ({title, img, description, id, date, handleDelete}) => {
             <div className={style.deleteContainer}>
                 { cookies.admin && (
                     <div className={style.editContainer}>
-                        <NavLink to={`/edit_news/${id}`}>Edit current news</NavLink>
+                        <NavLink to={`/edit_news/${id}`} className={style.readMore}>Edit current news</NavLink>
                         <img src={basket} alt={'/'} onClick={() => setShow(!show)} className={style.deleteIcon} />
                     </div>
                 ) }
