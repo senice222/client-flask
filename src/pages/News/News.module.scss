@@ -16,16 +16,19 @@
       margin: 0;
       margin-bottom: 10px;
     }
+
     .newsTitle {
       font-size: 20px;
       margin: 0;
       margin-bottom: 10px;
     }
+
     .newsDate {
       margin-top: 5px;
       color: #999;
       font-size: 14px;
     }
+
     .newsDescription {
       margin: 0;
       color: #777;
@@ -33,56 +36,67 @@
 
   }
 
-  .deleteIcon {
-    color: #d9534f;
-    cursor: pointer;
-    font-size: 18px;
-    margin-left: auto;
-    margin-right: 15px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    width: 35px;
-    height: 35px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .deleteIcon:hover {
-    background-color: #e7eaef;
-  }
 }
+
 .deleteContainer {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end; /* Выравнивание элементов вправо */
 
   .editContainer {
     display: flex;
-    align-items: center;
 
     .editLink {
       text-decoration: none;
       color: #9a9a9a;
       transition: .1s;
     }
+
     .editLink:hover {
       color: #777777;
-
     }
 
-    img {
-      margin-left: 10px;
+    .editIcon {
+      width: 35px;
+      height: 35px;
+      border-radius: 5px;
+      margin: 10px 15px 15px auto;
+      transition: background-color 0.3s ease;
     }
-  }
 
-  .deleteBtns {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
+    .editIcon:hover {
+      background-color: #e7eaef;
+    }
 
-    .btnCancel {
-      margin-left: 15px;
+    .deleteIcon {
+      color: #d9534f;
+      cursor: pointer;
+      font-size: 18px;
+      margin: 10px 15px 15px auto;
+      width: 35px;
+      height: 35px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .deleteIcon:hover {
+      background-color: #e7eaef;
     }
   }
 }
+
+
+.deleteBtns {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+
+  .btnCancel {
+    margin-left: 15px;
+  }
+}
+
 .readMore {
   display: inline-block;
   margin-top: 10px;
@@ -99,12 +113,14 @@
   height: 150px;
   object-fit: cover;
 }
+
 .loader {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 300px;
 }
+
 @media screen and (max-width: 600px) {
   .newsItem {
     width: 85%;

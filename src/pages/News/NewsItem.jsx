@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 import style from './News.module.scss'
 import {parseCookies} from "nookies";
 import basket from '../../assets/icons8-delete-64.png'
+import edit from '../../assets/icons8-edit-64.png'
 import {Button} from "antd";
 import {useTranslation} from "react-i18next";
 
@@ -29,13 +30,13 @@ const NewsItem = ({title, img, description, id, date, handleDelete}) => {
             <div className={style.deleteContainer}>
                 { cookies.admin && (
                     <div className={style.editContainer}>
-                        <NavLink to={`/edit_news/${id}`} className={style.readMore}>Edit current news</NavLink>
+                        <NavLink to={`/edit_news/${id}`}><img src={edit} className={style.editIcon} alt={'/'}/></NavLink>
                         <img src={basket} alt={'/'} onClick={() => setShow(!show)} className={style.deleteIcon} />
                     </div>
                 ) }
                 {
                     show && (
-                        <div style={{marginRight: "15px"}}>
+                        <div style={{marginRight: "15px", display: "flex", flexDirection: "column"}}>
                             <h4>{t("areYouSure")}</h4>
                             <div className={style.deleteBtns}>
                                 <Button type="primary" danger className={style.btnOk} onClick={handleOk}>Так</Button>
