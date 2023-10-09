@@ -65,6 +65,15 @@
   flex-direction: column;
   //margin-right: 20px;
 
+  .editContainer {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-left: 10px;
+    }
+  }
+
   .deleteBtns {
     display: flex;
     justify-content: center;
@@ -75,6 +84,7 @@
     }
   }
 }
+
 
 .newsImage {
   width: 200px;

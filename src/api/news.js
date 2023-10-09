@@ -1,19 +1,6 @@
 import axios from "axios";
 
-export const createNews = async (values, file) => {
-    // const formData = new FormData();
-    // formData.append("title", values.email)
-    // formData.append("text", values.text)
-    // formData.append("description", values.username)
-    // formData.append("password", values.password)
-    // formData.append("language", values.language)
-    // formData.append("image_file", file.originFileObj)
-    // formData.append("image_url", values.image_url)
-    //
-    // const config = {
-    //     headers: { "Content-Type": "multipart/form-data" },
-    // };
-
+export const createNews = async (values) => {
     return (await axios.post('https://igorchern.pythonanywhere.com/create-news', values)).data
 }
 
@@ -31,4 +18,7 @@ export const getDetailedNews = async (id) => {
 
 export const deleteNews = async (id) => {
     return (await axios.delete(`https://igorchern.pythonanywhere.com/news/${id}/delete`))
+}
+export const updateNews = async (id, values) => {
+    return (await axios.post(`https://igorchern.pythonanywhere.com/edit_news/${id}`, values))
 }

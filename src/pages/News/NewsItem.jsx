@@ -28,7 +28,12 @@ const NewsItem = ({title, img, description, id, date, handleDelete}) => {
                 <NavLink className={style.readMore} to={`/news/${id}`}>{t("readMore")}</NavLink>
             </div>
             <div className={style.deleteContainer}>
-                { cookies.admin && <img src={basket} alt={'/'} onClick={() => setShow(!show)} className={style.deleteIcon} /> }
+                { cookies.admin && (
+                    <div className={style.editContainer}>
+                        <NavLink to={`/edit_news/${id}`}>Edit current news</NavLink>
+                        <img src={basket} alt={'/'} onClick={() => setShow(!show)} className={style.deleteIcon} />
+                    </div>
+                ) }
                 {
                     show && (
                         <div style={{marginRight: "15px"}}>

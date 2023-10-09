@@ -6,14 +6,13 @@ import { parse } from 'node-html-parser';
 
 const DetailedNews = () => {
     const [news, setNews] = useState();
-    const params = useParams()
+    const {id} = useParams()
     const [parsedText, setParsedText] = useState('');
 
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const data = await Api.getDetailedNews(params.id)
-                console.log(data)
+                const data = await Api.getDetailedNews(id)
                 setNews(data);
 
                 const parsedHTML = parse(data?.text);
@@ -26,7 +25,7 @@ const DetailedNews = () => {
         }
         fetchNews()
         document.title = 'News..';
-    }, [params.id]);
+    }, [id]);
 
     return (
         <div className={style.area}>
