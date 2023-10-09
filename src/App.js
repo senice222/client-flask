@@ -13,10 +13,11 @@ import DetailedNews from "./pages/DetailedNews/DetailedNews";
 import {useTranslation} from "react-i18next";
 import EnglishNews from "./pages/News/EnglishNews/EnglishNews";
 import EditorContext from "./context/editorContext";
+import {EditorState} from "draft-js";
 
 function App() {
     const {i18n} = useTranslation()
-    const [editorContent, setEditorContent] = useState('')
+    const [editorContent, setEditorContent] = useState('');
 
     const contextValue = {
         editorContent,

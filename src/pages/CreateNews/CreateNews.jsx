@@ -1,15 +1,14 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import style from './CreateNews.module.scss'
 import {Button, Form, Input, notification, Select} from "antd";
 import {MyFormItem, MyFormItemGroup} from "../../utils/antd";
 import {useTranslation} from "react-i18next";
-import TextArea from "antd/lib/input/TextArea";
 import * as Api from '../../api/index'
 import {useNavigate} from "react-router-dom";
 // import Button from '@mui/material/Button';
 // import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 // import {VisuallyHiddenInput} from "../../utils/style";
-import Jodit from "../../components/JoditEditor/JoditEditor";
+import EditorComponent from "../../components/Editor/Editor";
 import EditorContext from "../../context/editorContext";
 
 
@@ -111,7 +110,7 @@ const CreateNews = () => {
                             label={<p className={style.label}>{t("content")}</p>}
                             validateTrigger="onChange"
                         >
-                            <Jodit className={style.editor} />
+                            <EditorComponent className={style.editor} />
                         </MyFormItem>
 
                     </MyFormItemGroup>
