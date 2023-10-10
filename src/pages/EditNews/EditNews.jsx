@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import style from '../CreateNews/CreateNews.module.scss'
 import {Button, Form, Input, notification, Select} from "antd";
-import {MyFormItem, MyFormItemGroup} from "../../utils/antd";
+import {MyFormItem} from "../../utils/antd";
 import {useTranslation} from "react-i18next";
 import * as Api from "../../api/index";
 import {useNavigate, useParams} from "react-router-dom";
@@ -43,6 +43,16 @@ const EditNews = () => {
         fetchNewsData();
     }, [id]);
 
+    useEffect(() => {
+        form.setFieldsValue({
+            'title': newsData.title,
+            'image_url': newsData.image_url,
+            'language': newsData.language,
+            'description': newsData.description,
+            'text': newsData.text
+        });
+    }, [form, newsData]);
+
     const onFinish = async (values) => {
         try {
             if (values.password === '1111') {
@@ -72,16 +82,6 @@ const EditNews = () => {
             console.log(e);
         }
     };
-
-    useEffect(() => {
-        form.setFieldsValue({
-            'title': newsData.title,
-            'image_url': newsData.image_url,
-            'language': newsData.language,
-            'description': newsData.description,
-            'text': newsData.text
-        });
-    }, [form, newsData]);
 
     return (
         <div className={style.area}>

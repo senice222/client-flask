@@ -1,0 +1,40 @@
+.editContainer {
+  display: flex;
+
+  .editLink {
+    text-decoration: none;
+    color: #9a9a9a;
+    transition: .1s;
+  }
+
+  .editLink:hover {
+    color: #777777;
+  }
+
+  .editIcon {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    margin: 10px 15px 15px auto;
+    transition: background-color 0.3s ease;
+  }
+
+  .editIcon:hover {
+    background-color: #e7eaef;
+  }
+
+  .deleteIcon {
+    color: #d9534f;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px 15px 15px auto;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .deleteIcon:hover {
+    background-color: #e7eaef;
+  }
+}

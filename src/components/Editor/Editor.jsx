@@ -19,7 +19,7 @@ const EditorComponent = ({editorComponent}) => {
     }
 
     return (
-        <div style={{}}>
+        <div>
             <JoditEditor
                 ref={editor}
                 value={editorComponent ? editNewsContent : editorContent}

@@ -2,16 +2,14 @@ import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 import style from './News.module.scss'
 import {parseCookies} from "nookies";
-import basket from '../../assets/icons8-delete-64.png'
-import edit from '../../assets/icons8-edit-64.png'
 import {Button} from "antd";
 import {useTranslation} from "react-i18next";
+import DeleteOrEditButton from "../../components/DeleteOrEditButton/DeleteOrEditButton";
 
 const NewsItem = ({title, img, description, id, date, handleDelete}) => {
     const cookies = parseCookies()
     const [show, setShow] = useState(false)
     const {t} = useTranslation()
-
 
     const handleOk = () => {
         handleDelete()
@@ -28,12 +26,7 @@ const NewsItem = ({title, img, description, id, date, handleDelete}) => {
                 <NavLink className={style.readMore} to={`/news/${id}`}>{t("readMore")}</NavLink>
             </div>
             <div className={style.deleteContainer}>
-                { cookies.admin && (
-                    <div className={style.editContainer}>
-                        <NavLink to={`/edit_news/${id}`}><img src={edit} className={style.editIcon} alt={'/'}/></NavLink>
-                        <img src={basket} alt={'/'} onClick={() => setShow(!show)} className={style.deleteIcon} />
-                    </div>
-                ) }
+                { cookies.admin && <DeleteOrEditButton setShow={setShow} show={show} id={id}/> }
                 {
                     show && (
                         <div style={{marginRight: "15px", display: "flex", flexDirection: "column"}}>
